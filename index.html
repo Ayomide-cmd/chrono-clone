@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chrono-Clone — Ghost Tactics</title>
+  <link rel="stylesheet" href="src/ui/styles.css" />
+</head>
+<body>
+  <canvas id="game-canvas"></canvas>
+
+  <div id="ui-overlay">
+    <!-- HUD -->
+    <div id="hud">
+      <div class="hud-item">
+        <span class="hud-label">Timelines</span>
+        <span class="hud-value" id="tl-count">0</span>
+      </div>
+      <div id="timer-bar-wrap">
+        <div class="hud-label" style="text-align:center;margin-bottom:4px">TIME REMAINING</div>
+        <div id="timer-bar-bg"><div id="timer-bar"></div></div>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Round</span>
+        <span class="hud-value" id="round-count">1</span>
+      </div>
+    </div>
+
+    <!-- Objectives -->
+    <div id="objective">
+      <div id="obj1">▶ GRAB THE KEY</div>
+      <div id="obj2">▶ REACH THE EXIT</div>
+    </div>
+
+    <!-- Clones sidebar -->
+    <div id="clones-info"></div>
+
+    <!-- Menu / Message overlay -->
+    <div id="msg-overlay">
+      <h2 id="msg-title">CHRONO·CLONE</h2>
+      <p id="msg-sub">WASD / ARROWS TO MOVE · SPACE TO REWIND</p>
+    </div>
+
+    <!-- Buttons -->
+    <div id="btns">
+      <button id="startBtn">▶ START</button>
+      <button id="rewindBtn" style="display:none">⟲ REWIND (SPACE)</button>
+    </div>
+  </div>
+
+  <!-- Game modules (load order matters) -->
+  <script type="module" src="src/game/constants.js"></script>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
