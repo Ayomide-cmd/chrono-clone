@@ -8,7 +8,6 @@ You have seconds to steal a key and escape. Fail, and your run becomes a **ghost
 
 ## Getting Started
 
-No build step required. Just serve the project root over HTTP:
 
 ```bash
 # Option 1 — VS Code Live Server extension (recommended)
