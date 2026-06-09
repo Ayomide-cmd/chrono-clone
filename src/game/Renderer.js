@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · Renderer
-//  Pure drawing layer – no game logic.
-//  Receives game state, draws it.
-// ─────────────────────────────────────────────
 
 import {
   CANVAS_W, CANVAS_H,
@@ -23,9 +18,7 @@ export class Renderer {
     canvas.height = CANVAS_H;
   }
 
-  // ── Utilities ──────────────────────────────
-
-  /** Radial glow at (x, y). */
+ 
   _glow(x, y, radius, col) {
     const g = this.ctx.createRadialGradient(x, y, 0, x, y, radius);
     g.addColorStop(0, col);
@@ -36,7 +29,7 @@ export class Renderer {
     this.ctx.fill();
   }
 
-  // ── Scene layers ───────────────────────────
+
 
   drawBackground() {
     const { ctx } = this;
@@ -144,7 +137,7 @@ export class Renderer {
       const cx  = frame.x + PS / 2;
       const cy  = frame.y + PS / 2;
 
-      // Motion trail (older frames)
+      
       const idx = tl.frames.indexOf(frame);
       for (let t = Math.max(0, idx - GHOST_TRAIL_LENGTH); t < idx; t++) {
         const tf    = tl.frames[t];
@@ -157,7 +150,7 @@ export class Renderer {
       }
       ctx.globalAlpha = 1;
 
-      // Ghost body
+     
       this._glow(cx, cy, 24, ggc);
       ctx.globalAlpha = 0.75;
       ctx.fillStyle   = gc;
@@ -188,7 +181,6 @@ export class Renderer {
     const cx = player.cx;
     const cy = player.cy;
 
-    // Motion trail
     trail.forEach((f, i) => {
       ctx.globalAlpha = (i / trail.length) * 0.3;
       ctx.fillStyle   = COLORS.playerTrail;
@@ -235,13 +227,13 @@ export class Renderer {
       ctx.lineWidth   = 1;
       ctx.stroke();
 
-      // Vision radius
+      
       ctx.fillStyle = COLORS.guardVision;
       ctx.beginPath();
       ctx.arc(gc, gy, 36, 0, Math.PI * 2);
       ctx.fill();
 
-      // Status icon
+     
       ctx.fillStyle  = 'rgba(255,255,255,0.5)';
       ctx.font       = '7px Courier New';
       ctx.textAlign  = 'center';
@@ -249,7 +241,7 @@ export class Renderer {
     });
   }
 
-  /** Vignette overlay to darken corners. */
+
   drawVignette() {
     const { ctx } = this;
     const vg = ctx.createRadialGradient(

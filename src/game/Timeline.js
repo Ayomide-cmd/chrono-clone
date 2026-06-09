@@ -1,22 +1,3 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · Timeline
-//
-//  Implements the core time-reversal mechanic.
-//
-//  ARCHITECTURE – Command / Time-stamped log:
-//  ──────────────────────────────────────────
-//  Each frame the live player emits a snapshot:
-//    { x, y, t }   (position + elapsed seconds)
-//
-//  On rewind, that log becomes a Timeline object.
-//  During playback we binary-search the log by
-//  elapsed time to find the closest frame, so
-//  ghost positions stay in perfect sync even if
-//  the frame-rate fluctuates.
-//
-//  Multiple Timeline objects run in parallel –
-//  each is an independent "ghost clone".
-// ─────────────────────────────────────────────
 
 export class TimelineRecorder {
   constructor() {
@@ -24,12 +5,12 @@ export class TimelineRecorder {
     this.frames = [];
   }
 
-  /** Record a snapshot from the live player. */
+  
   record(snapshot) {
     this.frames.push(snapshot);
   }
 
-  /** Seal into an immutable Timeline for ghost playback. */
+  
   seal(colorIndex) {
     return new Timeline([...this.frames], colorIndex);
   }
@@ -42,7 +23,7 @@ export class TimelineRecorder {
 export class Timeline {
   /**
    * @param {Array<{x:number,y:number,t:number}>} frames
-   * @param {number} colorIndex – selects ghost colour from COLORS.ghost[]
+   * @param {number} colorIndex 
    */
   constructor(frames, colorIndex) {
     this.frames     = frames;
