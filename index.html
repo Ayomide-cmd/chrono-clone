@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chrono-Clone — Ghost Tactics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Chrono-Clone</title>
   <link rel="stylesheet" href="src/ui/styles.css" />
 </head>
 <body>
   <canvas id="game-canvas"></canvas>
 
   <div id="ui-overlay">
-    <!-- HUD -->
     <div id="hud">
       <div class="hud-item">
         <span class="hud-label">Timelines</span>
@@ -26,30 +27,34 @@
       </div>
     </div>
 
-    <!-- Objectives -->
     <div id="objective">
       <div id="obj1">▶ GRAB THE KEY</div>
       <div id="obj2">▶ REACH THE EXIT</div>
     </div>
 
-    <!-- Clones sidebar -->
     <div id="clones-info"></div>
 
-    <!-- Menu / Message overlay -->
     <div id="msg-overlay">
       <h2 id="msg-title">CHRONO·CLONE</h2>
       <p id="msg-sub">WASD / ARROWS TO MOVE · SPACE TO REWIND</p>
     </div>
 
-    <!-- Buttons -->
     <div id="btns">
       <button id="startBtn">▶ START</button>
-      <button id="rewindBtn" style="display:none">⟲ REWIND (SPACE)</button>
+      <button id="rewindBtn" style="display:none">⟲ REWIND</button>
     </div>
   </div>
 
-  <!-- Game modules (load order matters) -->
-  <script type="module" src="src/game/constants.js"></script>
+  <canvas id="joystick-canvas"></canvas>
+  <button id="mobile-rewind-btn" aria-label="Rewind">⟲</button>
+
+  <div id="portrait-warning">
+    <div class="pw-inner">
+      <div class="pw-icon">📱</div>
+      <p>Rotate to landscape<br>for best experience</p>
+    </div>
+  </div>
+
   <script type="module" src="src/main.js"></script>
 </body>
 </html>
