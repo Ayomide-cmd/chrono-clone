@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · Guard
-//  Patrol AI with pressure-plate pause and
-//  player catch detection.
-// ─────────────────────────────────────────────
+
 
 import {
   GUARD_SIZE,
@@ -30,10 +26,7 @@ export class Guard {
   get cx() { return this.x; }
   get cy() { return this.y; }
 
-  /**
-   * Advance along the patrol path.
-   * If `paused` is true the guard stops in place (pressure plate active).
-   */
+  
   update(paused) {
     this.paused = paused;
     if (paused) return;
@@ -42,7 +35,7 @@ export class Guard {
     const d = dist(this, target);
 
     if (d < 4) {
-      // Reached waypoint – advance to next
+      
       this.pi = (this.pi + 1) % this.path.length;
     } else {
       const angle = Math.atan2(target.y - this.y, target.x - this.x);

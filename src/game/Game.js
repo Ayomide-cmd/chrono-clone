@@ -1,8 +1,4 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · Game
-//  Top-level orchestrator.
-//  Owns the game loop and all subsystems.
-// ─────────────────────────────────────────────
+
 
 import { ROUND_TIME, MAX_ROUNDS, TRAIL_LENGTH } from './constants.js';
 import {
@@ -60,7 +56,7 @@ export class Game {
     this._rafId  = null;
   }
 
-  // ── Public API ────────────────────────────
+  
 
   startGame() {
     this.round     = 1;
@@ -81,7 +77,7 @@ export class Game {
       return;
     }
 
-    // Seal the current recording as a ghost
+    
     if (this.recorder.frames.length > 0) {
       this.timelines.push(this.recorder.seal(this.round - 1));
     }
@@ -93,7 +89,7 @@ export class Game {
     this._updateHUD();
   }
 
-  // ── Internal ──────────────────────────────
+  
 
   _initRound() {
     this.elapsed = 0;
@@ -118,7 +114,7 @@ export class Game {
     this.hud.setCounters(this.timelines.length, this.round);
   }
 
-  // ── Game loop ──────────────────────────────
+  
 
   start() {
     this._rafId = requestAnimationFrame(ts => {
@@ -151,20 +147,20 @@ export class Game {
       return;
     }
 
-    // ── Player movement ───────────────────────
+    
     this.player.update(this.input.keys);
 
-    // Motion trail
+    
     this._trail.push({ x: this.player.x, y: this.player.y });
     if (this._trail.length > TRAIL_LENGTH) this._trail.shift();
 
-    // Record snapshot
+    
     this.recorder.record(this.player.snapshot(this.elapsed));
 
-    // ── Pressure plates ───────────────────────
+    
     const anyActive = this._updatePlates();
 
-    // ── Guards ────────────────────────────────
+   
     for (const guard of this.guards) {
       guard.update(anyActive);
       if (guard.catches(this.player)) {
@@ -173,7 +169,7 @@ export class Game {
       }
     }
 
-    // ── Collectibles ──────────────────────────
+    
     if (!this.player.hasKey) {
       const d = dist(
         { x: this.player.cx, y: this.player.cy },
@@ -198,7 +194,7 @@ export class Game {
     }
   }
 
-  /** Updates all pressure plates and returns whether any is active. */
+ 
   _updatePlates() {
     let any = false;
     for (const pp of this.pressurePlates) {
@@ -238,8 +234,7 @@ export class Game {
     this.hud.showPlayButtons(false);
   }
 
-  // ── Render ────────────────────────────────
-
+ 
   _render() {
     const { ctx }    = this.renderer;
     const { canvas } = this;

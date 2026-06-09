@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · EffectsManager
-//  Screen shake, glitch scanlines, rewind
-//  particle burst – all juice lives here.
-// ─────────────────────────────────────────────
 
 import {
   REWIND_PARTICLES,
@@ -22,7 +17,7 @@ export class EffectsManager {
     this.glitchTimer = 0;
   }
 
-  // ── Trigger rewind burst ────────────────────
+
   triggerRewind() {
     this.shakeTimer  = SHAKE_FRAMES;
     this.glitchTimer = GLITCH_FRAMES;
@@ -40,15 +35,15 @@ export class EffectsManager {
     }
   }
 
-  // ── Trigger catch/death shake ───────────────
+  
   triggerDeath() {
     this.shakeTimer  = SHAKE_FRAMES * 1.5;
     this.glitchTimer = GLITCH_FRAMES * 0.6;
   }
 
-  // ── Per-frame update ────────────────────────
+  
   update(dt) {
-    // Particles
+    
     this.particles = this.particles.filter(p => {
       p.x   += p.vx;
       p.y   += p.vy;
@@ -58,7 +53,7 @@ export class EffectsManager {
       return p.life > 0;
     });
 
-    // Screen shake
+    
     if (this.shakeTimer > 0) {
       const intensity = this.shakeTimer / SHAKE_FRAMES;
       this.shakeX = (Math.random() - 0.5) * SHAKE_MAGNITUDE * intensity;
@@ -72,7 +67,7 @@ export class EffectsManager {
     if (this.glitchTimer > 0) this.glitchTimer--;
   }
 
-  // ── Render particles on top of everything ───
+  
   /**
    * @param {CanvasRenderingContext2D} ctx
    */
@@ -88,8 +83,6 @@ export class EffectsManager {
   }
 
   /**
-   * Apply glitch scanlines to the canvas.
-   * Must be called AFTER the scene is drawn.
    * @param {HTMLCanvasElement} canvas
    * @param {CanvasRenderingContext2D} ctx
    */

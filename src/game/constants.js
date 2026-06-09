@@ -1,15 +1,11 @@
-// ─────────────────────────────────────────────
-//  CHRONO-CLONE · Constants
-//  Single source of truth for all tunable values
-// ─────────────────────────────────────────────
+
 
 export const CANVAS_W = 680;
 export const CANVAS_H = 460;
 
-// ── Grid ──────────────────────────────────────
 export const TILE = 32;
 
-// ── Player ────────────────────────────────────
+
 export const PLAYER_SIZE   = 14;
 export const PLAYER_SPEED  = 2.2;
 
@@ -101,22 +97,21 @@ export const MAP = [
 export const MAP_ROWS = MAP.length;
 export const MAP_COLS = MAP[0].length;
 
-// Derived map pixel offset – centres the grid on the canvas
 export const MAP_OX = (CANVAS_W - MAP_COLS * TILE) / 2;
 export const MAP_OY = (CANVAS_H - MAP_ROWS * TILE) / 2;
 
-// ── Entity start positions (tile coordinates) ─
+
 export const SPAWN_TILE   = { col: 1, row: 1 };
 export const KEY_TILE     = { col: 10, row: 7 };
 export const EXIT_TILE    = { col: 19, row: 1 };
 
-// Pressure plate tile positions
+
 export const PRESSURE_TILES = [
   { col: 5, row: 6 },
   { col: 15, row: 6 },
 ];
 
-// Guard patrol waypoints (tile coords – converted to pixels in Guard.js)
+
 export const GUARD_PATROL_TILES = [
   [ {c:3,r:2},{c:9,r:2},{c:9,r:5},{c:3,r:5} ],
   [ {c:13,r:9},{c:19,r:9},{c:19,r:12},{c:13,r:12} ],
