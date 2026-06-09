@@ -1,4 +1,4 @@
-# Chrono-Clone 🕰️
+# Chrono-Clone 
 
 A short single-screen stealth/strategy game where **time is your resource**.
 
@@ -108,9 +108,3 @@ All tunable values live in `src/game/constants.js`:
 - `COLORS` — full neon palette
 - `MAP` — edit the 2D array to redesign the level (0 = floor, 1 = wall)
 - `GUARD_PATROL_TILES` — add/remove guards or change their paths
-
----
-
-## License
-
-MIT — use freely in your portfolio.
