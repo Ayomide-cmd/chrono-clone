@@ -18,13 +18,14 @@ html, body {
   position: absolute;
   top: 0; left: 0;
   transform-origin: top left;
+  z-index: 1;
 }
 
 #ui-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 10;
+  z-index: 20;
 }
 
 #hud {
@@ -83,8 +84,9 @@ html, body {
 
 #msg-overlay {
   position: absolute; left: 50%; top: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center; pointer-events: none; z-index: 10;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
 }
 
 #msg-title {
@@ -123,7 +125,7 @@ button:active { transform: scale(0.97); }
   position: fixed;
   bottom: 24px; left: 24px;
   width: 140px; height: 140px;
-  z-index: 20;
+  z-index: 30;
   display: none;
   touch-action: none;
 }
@@ -139,7 +141,7 @@ button:active { transform: scale(0.97); }
   font-size: 26px; letter-spacing: 0;
   display: none;
   align-items: center; justify-content: center;
-  cursor: pointer; z-index: 20;
+  cursor: pointer; z-index: 30;
   touch-action: manipulation;
   padding: 0;
 }
@@ -167,13 +169,13 @@ button:active { transform: scale(0.97); }
 .pw-inner p { font-size: 14px; letter-spacing: 2px; line-height: 1.8; }
 
 @keyframes rotate-hint {
-  0%,100% { transform: rotate(0deg);  }
+  0%,100% { transform: rotate(0deg); }
   50%      { transform: rotate(90deg); }
 }
 
 @media (hover: none) and (pointer: coarse) {
   #joystick-canvas   { display: block; }
-  #mobile-rewind-btn { display: flex;  }
+  #mobile-rewind-btn { display: flex; }
 
   .hud-label { font-size: 8px; }
   .hud-value { font-size: 15px; }
