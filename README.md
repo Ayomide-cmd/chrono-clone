@@ -1,4 +1,4 @@
-# Chrono-Clone 
+ # Chrono-Clone 
 
 A short single-screen stealth/strategy game where **time is your resource**.
 
